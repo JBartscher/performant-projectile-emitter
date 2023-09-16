@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using Godot.Collections;
+using PerformantPhysicsEntities;
 
 public partial class Emitter : Node2D
 {
@@ -112,19 +113,21 @@ public partial class Emitter : Node2D
     }
 }
 
-public partial class Projectile : GodotObject
+public partial class Projectile : GodotObject, IProjectile
 {
-    public Vector2 Position;
-    public Vector2 Direction;
-    public float Speed;
-    public Rid ShapeId;
-    public float Lifetime = 0.0f;
-    
-
     public Projectile(Vector2 position, Vector2 direction, float speed)
     {
         Position = position;
         Direction = direction;
         Speed = speed;
     }
+
+    public Vector2 Position { get; set; }
+    public Vector2 Direction { get; set; }
+    public float Speed { get; set; }
+    public Rid ShapeId { get; set; }
+    public float Lifetime { get; set; }
+    
+    public event OnLifetimeBeginEventHandler LifetimeBegin;
+    public event OnDestroyEventHandler Destroy;
 }

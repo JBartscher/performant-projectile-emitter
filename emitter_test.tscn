@@ -8,7 +8,7 @@
 script = ExtResource("1_f7t7i")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.05
+wait_time = 0.5
 autostart = true
 
 [node name="Emitter" parent="." instance=ExtResource("1_7gbsa")]
